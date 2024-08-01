@@ -1,4 +1,4 @@
-from logger import input_data, print_data, edit_data
+from logger import input_data, print_data, edit_data, delete_data
 
 def interfase():
     print('Добрый день! \n 1 запись данных \n 2 вывод двнных \n 3 редакция данных \n 4 удаление данных')
@@ -14,5 +14,7 @@ def interfase():
         print_data()
     if command==3:
         edit_data()
+    if command==4:
+        delete_data()
     
 

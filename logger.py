@@ -62,7 +62,6 @@ def edit_data():
             result = []
             if choise.lower() == 'yes':
                 for i in range(0,len(data_first),5):
-                    print(i)
                     if i == index_position:
                         edit_data = [f'{name}\n',f'{surname}\n',f'{phone}\n',f'{address}\n','\n']
                         result.append(edit_data)
@@ -79,7 +78,6 @@ def edit_data():
     elif var == 2:
         with open('data_second_variant.csv', 'r+', encoding='utf-8') as f:
             data_first = f.readlines()
-            print(data_first)
             index_position = int(input(f'От 0 до {int(len(data_first)-1)}:'))
             print('Вы хотите изменить эти данные:\n')
             print(''.join(data_first[index_position]))
@@ -87,7 +85,6 @@ def edit_data():
             result = []
             if choise.lower() == 'yes':
                 for i in range(len(data_first)):
-                    print(i)
                     if i == index_position:
                         edit_data = f'{name};{surname};{phone};{address};\n'
                         result.append(edit_data)
@@ -98,4 +95,52 @@ def edit_data():
                 for i in result:
                     f.writelines(i)
                 print('Редактирование завершено.')
-     
+
+def delete_data():
+    var = int(input(f'формат записи \n\n'
+    f'1 первый вариант\n'
+    f'name\nsurname\nphone\naddress\n\n'
+    f'2 второй вариант\n'
+    f'name;surname;phone;address;\n\n'
+    f'Выберите вариант.'
+    ))
+    while var!=1 and var!=2:
+        print('Неправильный ввод!Введите значение 1 или 2.\n')
+        command = int(input('Введите число'))
+    if var == 1:
+        with open('data_first_variant.csv', 'r+', encoding='utf-8') as f:
+                data_first = f.readlines()
+                index_position = int(input(f'Выберите позицию элемента от 0 до {int(len(data_first)/5-1)}'))*5
+                print('Вы хотите изменить эти данные:\n')
+                print(''.join(data_first[index_position:(index_position+4)]))
+                print(data_first)
+                print(data_first[index_position:(index_position+4)])
+                choise = input('Вы действительно хотите изменить данные: yes or no\n')
+                result = []
+                if choise.lower() == 'yes':
+                    for i in range(0,len(data_first),5):
+                        if i != index_position:
+                            result.append(data_first[i:(i+5)])
+                print(result)
+                f.truncate(0)
+                f.seek(0)
+                for i in result:
+                    f.writelines(i)
+                print('Удаление завершено.')
+                
+    elif var == 2:
+        with open('data_second_variant.csv', 'r+', encoding='utf-8') as f:
+            data_first = f.readlines()
+            index_position = int(input(f'От 0 до {int(len(data_first)-1)}:'))
+            print('Вы хотите изменить эти данные:\n')
+            choise = input('Вы действительно хотите изменить данные: yes or no\n')
+            result = []
+            if choise.lower() == 'yes':
+                for i in range(len(data_first)):
+                    if i != index_position:
+                        result.append(data_first[i])
+                    f.truncate(0)
+                    f.seek(0)
+                    for i in result:
+                        f.writelines(i)
+                print('Удвление завершено.')
