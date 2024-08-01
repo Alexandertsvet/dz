@@ -25,11 +25,12 @@ def input_data():
 
 
 def print_data():
-    print('Вывод данных из первого файла.')
+    print('Вывод данных из первого файла. \n')
     with open('data_first_variant.csv', 'r', encoding='utf-8') as f:
             data_first = f.readlines()
-            
-                
+            print(*data_first)
 
-
-print_data()
+    print('Вывод данных из второго файла. \n')
+    with open('data_second_variant.csv', 'r', encoding='utf-8') as f:
+            data_first = f.readlines()
+            print(*data_first)

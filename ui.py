@@ -13,5 +13,3 @@ def interfase():
     if command==2:
         print_data()
 
-
-interfase()
