@@ -1,10 +1,10 @@
-from logger import input_data, print_data
+from logger import input_data, print_data, edit_data
 
 def interfase():
-    print('Добрый день! /n 1 запись данных /n 2 дывод двнных')
-    command = int(input('Введите число'))
+    print('Добрый день! \n 1 запись данных \n 2 вывод двнных \n 3 редакция данных \n 4 удаление данных')
+    command = int(input('Введите число:'))
 
-    while command!=1 and command!=2:
+    while command!=1 and command!=2 and command!=3 and command!=4:
         print('Неправильный ввод!Введите значение 1 или 2.')
         command = int(input('Введите число'))
 
@@ -12,4 +12,7 @@ def interfase():
         input_data()
     if command==2:
         print_data()
+    if command==3:
+        edit_data()
+    
 
